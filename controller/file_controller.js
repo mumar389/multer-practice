@@ -6,18 +6,17 @@ module.exports.homePage = async (req, res) => {
     console.log("Error");
   }
 
-    // console.log(allFiles);
-    return res.render("index", {
-      files: allFiles,
-    });
-  
+  // console.log(allFiles);
+  return res.render("index", {
+    files: allFiles,
+  });
 };
 
 module.exports.handleFile = async (req, res) => {
   try {
     File.uploadedFile(req, res, async (err) => {
       if (err) {
-        console.log("Error");
+        console.log("Error", err);
         return res.redirect("back");
       }
       if (req.file) {
