@@ -7,8 +7,9 @@ const path = require("path");
 
 const app = express();
 
-app.use("/uploads", express.static(__dirname + "/uploads"));
 app.set("view engine", "ejs");
+app.set('views')
+app.use("/uploads", express.static(__dirname + "/uploads"));
 app.use(express.urlencoded({ extended: true }));
 app.use("/", require("./routes/index"));
 
