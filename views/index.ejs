@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pdf Play</title>
+  </head>
+  <body>
+    <h1>Hello for now only pdf,jpg,jpeg,png files are supported!!</h1>
+    <form action="/upload-post" method="post" enctype="multipart/form-data">
+      <label for="pdf">Select Your Notice file-:</label>
+      <input type="file" name="notice" accept=".pdf, .jpeg, .png, .jpg" />
+      <br />
+      <button type="submit">Upload</button>
+    </form>
+
+    <%if(files.length===0){%>
+    <p>No Data</p>
+    <%}else{%>
+
+    <h3>All Files-:</h3>
+
+    <%for(let i of files){%> <%if(i.fileType==="jpeg" || i.fileType==="jpg" ||
+    i.fileType==="png"){%>
+    <p><img src='<%=i.name%>'' alt="Not Found" width="50%"></p>
+
+    <%} else if(i.fileType==="pdf"){%>
+    <a href="/download-file/<%=i._id%>">New Notice Click here to Download</a>
+    <%}%> <%}%> <%}%>
+  </body>
+</html>
